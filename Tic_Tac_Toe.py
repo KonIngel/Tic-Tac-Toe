@@ -2,15 +2,29 @@ from __future__ import print_function
 import os  ## to use os.system('cls')
 import random ## generate nums to make computer playing
 
+__author__ = "KonINGEL"
+__copyright__ = "Copyright (C) 2018 Mostafa Kamal"
+__version__ = "1.0"
+
+
+
+# This is the main thing in the program without it the program will be failed
 board = ["0","1","2","3","4","5","6","7","8","9"]
+N = 1 # I need it to name my players
 
-
+def hello():
+    print("============================")
+    print("Wellcome to Tic Tac Toe V1.0 :) \n")
+    print("Tell me your Opinion about my Tic Tac Toe")
+    print("============================")
 
 # clear Terminal
 def clear():
     os.system('cls')
 
-
+def reset_N():
+    global N
+    N = 1
 
 # display board in cmd
 def display():
@@ -50,6 +64,19 @@ def check_winner(player):
         return True
 
 
+
+def draw():
+    if (board[1] == 'X' or board[1] =='O')\
+       and (board[2] == 'X' or board[2] =='O')\
+       and (board[3] == 'X' or board[3] =='O')\
+       and (board[4] == 'X' or board[4] =='O')\
+       and (board[5] == 'X' or board[5] =='O')\
+       and (board[6] == 'X' or board[6] =='O')\
+       and (board[7] == 'X' or board[7] =='O')\
+       and (board[8] == 'X' or board[8] =='O')\
+       and (board[9] == 'X' or board[9] =='O'):
+           return True
+
 # reset display to use it when you play again
 def reset_display():
     global  board
@@ -57,11 +84,30 @@ def reset_display():
     clear()
 
 
-def play_game():
+def pc():
  reset_display()
  while True:
     display()
-    player = raw_input("Choose num from (1:9) : ")
+    if draw() == True:
+            print( '=====================')
+            print ("---- Draw . Good Game for each other :) -----")
+            print( '=====================')
+            rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
+            if rematch == 'y':
+                  reset_N()
+                  play_game()
+            else:
+                  print ("Thanks for playing!")
+                  break
+    global N
+    if N == 1 :
+        global C
+        C = raw_input("please write your name  :  ")
+        print("\n")
+        N = 2
+
+
+    player = raw_input( C + " , Choose num from (1:9) : ")
     player = int(player)
 
 
@@ -81,6 +127,7 @@ def play_game():
 
                 rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
                 if rematch == 'y':
+                   reset_N()
                    play_game()
                 else:
                   print ("Thanks for playing!")
@@ -99,6 +146,7 @@ def play_game():
                          print( '=====================')
                          rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
                          if rematch == 'y':
+                           reset_N()
                            play_game()
                          else:
                             print ("Thanks for playing!")
@@ -114,5 +162,97 @@ def play_game():
             else:
                 break
                 print("Thanks for Playing")
+
+
+
+def two_player():
+    reset_display()
+    while True:
+        display()
+        global N
+        if N == 1:
+           global C
+           global D
+           C = raw_input("first player  please Write your name :   ")
+           D = raw_input("Second player please Write your name :   ")
+           N = 2
+
+        player1 = raw_input(  C + ' ,  Choose num from (1:9) : ')
+        player1 = int(player1)
+
+        try:
+          if board[player1] != 'X' and board[player1] != 'O' :
+                board[player1] = 'X'
+                check = True
+                display()
+                if draw() == True :
+                        print( '=====================')
+                        print ("---- Draw . Good Game for each other :) -----")
+                        print( '=====================')
+                        rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
+                        if rematch == 'y':
+                                reset_N()
+                                play_game()
+                        else:
+                                print ("Thanks for playing!")
+                                break
+                if  check_winner('X') == True:
+                            print( '=====================')
+                            print ("-------  %s  Wins -------  " % C)
+                            print( '=====================')
+                            rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
+                            if rematch == 'y':
+                                  reset_N()
+                                  play_game()
+                            else:
+                                 print ("Thanks for playing!")
+                                 break
+                while check:
+                    player2 = raw_input( D + ' ,  Choose num from (1:9) : ')
+                    player2 = int(player2)
+
+
+                    if board[player2] != 'X' and board[player2] != 'O':
+                        board[player2] = 'O'
+                        check = False
+
+                        if  check_winner('O') == True:
+                            print( '=====================')
+                            print ("-------  %s  Wins -------  " % D)
+                            print( '=====================')
+                            rematch = raw_input('Would you like to play again?  (y/n)  :  ').lower()
+                            if rematch == 'y':
+                                  reset_N()
+                                  play_game()
+                            else:
+                                 print("Thanks for playing!")
+                                 break
+        except:
+            print("Sorry sir , :) Choose num from (1:9) only ")
+            Sorry = raw_input("Choose (y/n) to continue match or not  :  ").lower()
+            if Sorry == "y" :
+                continue
+            else:
+                print("Thanks for Playing")
+                break
+
+
+
+
+def play_game():
+    print("\n")
+    a = raw_input("Would you play with computer or with another player please write (pc / player) \n\nWrite here : ").lower()
+    if a == "pc":
+        pc()
+    elif a == 'player':
+        two_player()
+    else:
+        print('======================')
+        print("Please , Write (pc / player) ")
+        play_game()
+
+
+hello()
+
 
 play_game()
