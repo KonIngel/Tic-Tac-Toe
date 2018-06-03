@@ -1,16 +1,40 @@
-# Tic Tac Toe Game
+# Tic Tac Toe Game in Python
+
+__author__ = "KonINGEL"
 
 
-<i><h4 > I make it work in cmd </h4> </i>
+__copyright__ = "Copyright (C) 2018 Mostafa Kamal"
 
 
-<i>you play with computer I'll make a new version to play with another player</i>
-<h3>This is very simple game to make As I still noob </h3>
+__version__ = "1.0"
 
 
-<i>talk to me and tell me It is good or not ,  how can I make it good 
-<i>and if you have any sugestion
+
+<i><h4>Hello I make it as my practice so I still improved it to make me good Programmer  so it helps me  solve more challenges
+  that I face when I programmed it .  I don't know what you think about me but I know only one something that it's very easy to any
+  programmer</h4></i>
+
+  <i><h4>
+  I think you should see my code for fun :)
+</h4></i>
 
 
-Thanks a lot for seeing it </i>
 
+<h2>Imported Libraries :</h2>
+
+> colorama
+
+> random
+
+> os
+
+> <p>__future__</p>
+
+> termcolor
+
+
+# Contributing
+
+you can contribute and you can message me at gmail 2143578@Gmail.com
+
+if you want help me more you can tell me what you want to improve and I make it myself
